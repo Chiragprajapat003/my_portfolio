@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chirag Prajapat - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap');
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #2980b9;
+            --text-dark: #222;
+            --text-light: #555;
+            --bg-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f4f4f9;
+            color: var(--text-dark);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .resume-container {
+            width: 210mm; /* A4 width */
+            min-height: 297mm; /* A4 height */
+            background: var(--bg-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-family: 'Merriweather', serif;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .profiles {
+            font-size: 13px;
+        }
+
+        .profiles a {
+            color: var(--accent);
+            text-decoration: none;
+            margin: 0 5px;
+            font-weight: 600;
+        }
+
+        /* MAIN CONTENT - 2 COLUMNS */
+        .content {
+            display: flex;
+            gap: 30px;
+            flex: 1;
+        }
+
+        .left-col {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        .right-col {
+            flex: 1;
+            max-width: 55%;
+        }
+
+        /* SECTIONS */
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-family: 'Merriweather', serif;
+            font-size: 16px;
+            color: var(--primary);
+            text-transform: uppercase;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .item p {
+            font-size: 13px;
+            margin-bottom: 4px;
+            color: var(--text-light);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .item-date, .item-location {
+            font-size: 12px;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .skills-list {
+            list-style: none;
+            font-size: 13px;
+            color: var(--text-light);
+            padding-left: 0;
+        }
+        
+        .skills-list li {
+            margin-bottom: 8px;
+        }
+
+        .skills-list strong {
+            color: var(--primary);
+        }
+
+        .bullet-point {
+            list-style-type: square;
+            margin-left: 18px;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .bullet-point a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                display: block;
+            }
+            .resume-container {
+                box-shadow: none;
+                width: 100%;
+                height: auto;
+                padding: 0;
+            }
+            .dl-btn {
+                display: none !important;
+            }
+        }
+
+        /* Download Button Overlay for Browser */
+        .dl-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+            transition: transform 0.2s;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .dl-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="#" class="dl-btn" onclick="window.print(); return false;">📄 Download PDF (Print)</a>
+
+    <div class="resume-container">
+        <!-- HEADER -->
+        <header>
+            <h1>CHIRAG PRAJAPAT</h1>
+            <div class="contact-info">
+                <strong>Email:</strong> kachholi0@gmail.com | <strong>Role:</strong> Full-Stack Web Developer
+            </div>
+            <div class="profiles">
+                <a href="https://github.com/Chiragprajapat003" target="_blank">GitHub</a> | 
+                <a href="https://www.linkedin.com/in/chirag-prajapat-1775bb371/" target="_blank">LinkedIn</a> | 
+                <a href="https://leetcode.com/u/Chirag_Prajapat/" target="_blank">LeetCode</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <!-- LEFT COLUMN -->
+            <div class="left-col">
+                <div class="section">
+                    <h2 class="section-title">SKILLS</h2>
+                    <ul class="skills-list">
+                        <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, React JS</li>
+                        <li><strong>Backend:</strong> Node.js, RESTful APIs</li>
+                        <li><strong>Programming Languages:</strong> C, C++, Python, Java</li>
+                        <li><strong>Database:</strong> MongoDB</li>
+                        <li><strong>Tools & Workflows:</strong> Git, GitHub, Postman, Figma</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">EDUCATION</h2>
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-title">Bachelor of Engineering</span>
+                        </div>
+                        <p class="item-date">Computer Engineering (First Year)</p>
+                        <p>Focus on data structures, system design, and logical problem solving.</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">CERTIFICATIONS</h2>
+                    <div class="item">
+                        <span class="item-title">AI Tools and Workshop</span>
+                        <p class="item-date">Issued by Be-10X (2025)</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">ACHIEVEMENTS</h2>
+                    <ul class="skills-list">
+                        <li><strong>Hackathon Runner Up</strong><br>Tech Fest 2024 - Innovative Solution Award</li>
+                        <li>Actively developed open-source website clones and games to build robust logic.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-col">
+                <div class="section">
+                    <h2 class="section-title">PROJECTS</h2>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-title">SkillBridge</span>
+                            <span class="item-date">Hackathon Entry</span>
+                        </div>
+                        <p>A local skill exchange and micro-service platform.</p>
+                        <ul style="margin-top: 5px;">
+                            <li class="bullet-point">Built with <strong>React</strong> to facilitate teamwork, real-world problem solving, and user-focused micro-transactions.</li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-title">API Integration Hub</span>
+                            <span class="item-date">React & REST</span>
+                        </div>
+                        <p>Client-side routing app fetching real-time data from multiple public APIs.</p>
+                        <ul style="margin-top: 5px;">
+                            <li class="bullet-point"><strong>Technologies:</strong> React Router, JavaScript, CSS</li>
+                            <li class="bullet-point"><a href="https://routing-api-intigration.netlify.app/" target="_blank">Live Demo</a> | <a href="https://github.com/Chiragprajapat003/React-project" target="_blank">GitHub Repo</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-title">6 Website Clones</span>
+                            <span class="item-date">Frontend Dev</span>
+                        </div>
+                        <p>Pixel-accurate clones of real-world websites built for layout mastery.</p>
+                        <ul style="margin-top: 5px;">
+                            <li class="bullet-point"><strong>Technologies:</strong> Pure HTML, CSS</li>
+                            <li class="bullet-point"><a href="https://chiragprajapat.netlify.app/" target="_blank">Live Demo</a> | <a href="https://github.com/Chiragprajapat003/website_clone" target="_blank">GitHub Repo</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="item">
+                        <div class="item-header">
+                            <span class="item-title">Game Building (4 Games)</span>
+                            <span class="item-date">Logic & DOM</span>
+                        </div>
+                        <p>Interactive browser games focusing on complex DOM manipulation and animations.</p>
+                        <ul style="margin-top: 5px;">
+                            <li class="bullet-point"><strong>Technologies:</strong> Vanilla JavaScript, HTML, CSS</li>
+                            <li class="bullet-point"><a href="https://gamebuilding.netlify.app/" target="_blank">Live Demo</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">PROFILE SUMMARY</h2>
+                    <p style="font-size: 13px; color: var(--text-light); text-align: justify;">
+                        Curious and driven Full-Stack Web Developer. Highly focused on building practical knowledge by translating ideas into code, solving logical problems, and developing high-performance web experiences. Experienced with modern frontend tooling and building clean, aesthetic UI architectures.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

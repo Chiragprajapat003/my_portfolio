@@ -166,7 +166,7 @@ function App() {
                 <p className="tagline">
                   Building aesthetic, high-performance web experiences.
                 </p>
-                <button className="cta-button" onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}>VIEW WORK</button>
+                <a href="/Chirag_Prajapat_Resume.html" target="_blank" rel="noopener noreferrer" className="cta-button" style={{ display: 'inline-block', textDecoration: 'none' }}>RESUME</a>
               </div>
               <div className="hero-image-container">
                 <div className="hero-img-wrapper">
