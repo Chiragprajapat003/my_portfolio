@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const Background = () => {
+const Background = ({ theme = 'dark' }) => {
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -8,6 +8,7 @@ const Background = () => {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
         let particles = [];
+        const isLightTheme = theme === 'light';
 
         // Resize handling
         const resizeCanvas = () => {
@@ -26,7 +27,9 @@ const Background = () => {
                 this.size = Math.random() * 1.5 + 0.5;
                 this.speedX = Math.random() * 0.5 - 0.25;
                 this.speedY = Math.random() * 0.5 - 0.25;
-                this.color = Math.random() > 0.5 ? '#00f2ff' : '#7000ff';
+                this.color = isLightTheme
+                    ? (Math.random() > 0.5 ? '#5f88a8' : '#83a8c4')
+                    : (Math.random() > 0.5 ? '#87CEEB' : '#B0C4DE');
             }
 
             update() {
@@ -65,7 +68,7 @@ const Background = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw simplified grid
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+            ctx.strokeStyle = isLightTheme ? 'rgba(16, 36, 59, 0.08)' : 'rgba(255, 255, 255, 0.03)';
             ctx.lineWidth = 1;
             const gridSize = 50;
 
@@ -96,7 +99,10 @@ const Background = () => {
 
                     if (distance < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(100, 255, 218, ${1 - distance / 100})`;
+                        const alpha = 1 - distance / 100;
+                        ctx.strokeStyle = isLightTheme
+                            ? `rgba(78, 132, 171, ${alpha * 0.55})`
+                            : `rgba(135, 206, 235, ${alpha})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particle.x, particle.y);
                         ctx.lineTo(otherParticle.x, otherParticle.y);
@@ -115,7 +121,7 @@ const Background = () => {
             window.removeEventListener('resize', resizeCanvas);
             cancelAnimationFrame(animationFrameId);
         };
-    }, []);
+    }, [theme]);
 
     return (
         <canvas
@@ -125,7 +131,9 @@ const Background = () => {
                 top: 0,
                 left: 0,
                 zIndex: -1,
-                background: 'linear-gradient(to bottom, #050505, #0a0a0a)',
+                background: theme === 'light'
+                    ? 'linear-gradient(to bottom, #fbf5ea, #efe4d2)'
+                    : 'linear-gradient(to bottom, #050505, #0a0a0a)',
             }}
         />
     );
