@@ -30,15 +30,15 @@ const Resume = ({ onClose }) => {
           </div>
           <div className="r-header-right">
             <div className="r-contact-item">
-              <span>+91 8118803483</span>
+              <a href="tel:+918118803483" style={{color: 'inherit', textDecoration: 'none'}}>+91 8118803483</a>
               <div className="r-icon-circle"><FaPhoneAlt size={10} /></div>
             </div>
             <div className="r-contact-item">
-              <span>kachholi0@gmail.com</span>
+              <a href="mailto:kachholi0@gmail.com" style={{color: 'inherit', textDecoration: 'none'}}>kachholi0@gmail.com</a>
               <div className="r-icon-circle"><FaEnvelope size={10} /></div>
             </div>
             <div className="r-contact-item">
-              <span>chiragprajapat.netlify.app</span>
+              <a href="https://chiragprajapat.netlify.app" target="_blank" rel="noreferrer" style={{color: 'inherit', textDecoration: 'none'}}>chiragprajapat.netlify.app</a>
               <div className="r-icon-circle"><FaGlobe size={10} /></div>
             </div>
           </div>
@@ -150,8 +150,6 @@ const Resume = ({ onClose }) => {
                 </div>
                 <div className="r-project-links">
                   <a href="https://github.com/Chiragprajapat003/contectcraft_ai" target="_blank" rel="noreferrer">GitHub Link</a>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <a href="#">Live Demo</a>
                 </div>
               </div>
 
@@ -183,8 +181,6 @@ const Resume = ({ onClose }) => {
                 </div>
                 <div className="r-project-links">
                   <a href="https://github.com/Chiragprajapat003/E-comerce-" target="_blank" rel="noreferrer">GitHub Link</a>
-                  <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  <a href="#">Live Demo</a>
                 </div>
               </div>
 

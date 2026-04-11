@@ -14,9 +14,9 @@ function App() {
   const githubUsername = 'Chiragprajapat003';
   const [isLoading, setIsLoading] = useState(true);
   const [isCloneModalOpen, setIsCloneModalOpen] = useState(false);
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showAllProjects, setShowAllProjects] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [githubMetrics, setGithubMetrics] = useState({
     commits: null,
     contributions: null,
@@ -43,6 +43,12 @@ function App() {
       }
     }, 2800);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handlePopState = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   useEffect(() => {
@@ -295,7 +301,7 @@ function App() {
         ]}
       />
       {isLoading && <Loader />}
-      {isResumeModalOpen && <Resume onClose={() => setIsResumeModalOpen(false)} />}
+      {currentPath === '/resume' && <Resume onClose={() => { window.history.pushState(null, '', '/'); setCurrentPath('/'); }} />}
       <Background theme={isLightMode ? 'light' : 'dark'} />
 
       {!isLoading && (
@@ -315,7 +321,7 @@ function App() {
               <a href="#skills" onClick={(e) => { scrollToSection(e, 'skills'); setIsMobileMenuOpen(false); }}>Skills</a>
               <a href="#projects" onClick={(e) => { scrollToSection(e, 'projects'); setIsMobileMenuOpen(false); }}>Projects</a>
               <a href="#certificates" onClick={(e) => { scrollToSection(e, 'certificates'); setIsMobileMenuOpen(false); }}>Certificates</a>
-              <a href="#resume" onClick={(e) => { e.preventDefault(); setIsResumeModalOpen(true); setIsMobileMenuOpen(false); }}>Resume</a>
+              <a href="/resume" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/resume'); setCurrentPath('/resume'); setIsMobileMenuOpen(false); }}>Resume</a>
               <a href="#contact" onClick={(e) => { scrollToSection(e, 'contact'); setIsMobileMenuOpen(false); }}>Contact</a>
               <button
                 type="button"
@@ -341,7 +347,7 @@ function App() {
                 </div>
                 <div className="hero-actions" style={{ display: 'inline-block' }}>
                   <div className="hero-buttons">
-                    <button onClick={() => setIsResumeModalOpen(true)} className="cta-button" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', width: '250px', height: '60px', boxSizing: 'border-box', whiteSpace: 'nowrap', border: 'none', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'inherit', cursor: 'pointer' }}>RESUME</button>
+                    <a href="/resume" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/resume'); setCurrentPath('/resume'); }} className="cta-button" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', width: '250px', height: '60px', boxSizing: 'border-box', whiteSpace: 'nowrap', border: 'none', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'inherit', cursor: 'pointer' }}>RESUME</a>
                     <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="cta-button" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', width: '250px', height: '60px', boxSizing: 'border-box', whiteSpace: 'nowrap' }}>VIEW PROJECTS</a>
                   </div>
                   <div className="hero-social-links" style={{ width: '100%', justifyContent: 'space-between', marginTop: '1.5rem', gap: '0' }}>

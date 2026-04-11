@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chirag-portfolio03.netlify.app/sitemap.xml
