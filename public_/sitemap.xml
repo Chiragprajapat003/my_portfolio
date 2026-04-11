@@ -17,14 +17,14 @@
     <loc>https://chirag-portfolio03.netlify.app/projects</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://chirag-portfolio03.netlify.app/contact</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
