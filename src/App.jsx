@@ -9,6 +9,7 @@ import { FaHtml5, FaCss3Alt, FaReact, FaGithub, FaPython, FaNodeJs, FaJava, FaLi
 import { SiC, SiCplusplus, SiFigma, SiPostman, SiMongodb, SiLeetcode, SiJavascript } from 'react-icons/si';
 import AnimatedCursor from "react-animated-cursor";
 import Resume from './Resume';
+import { Helmet } from "react-helmet";
 
 function App() {
   const githubUsername = 'Chiragprajapat003';
@@ -22,6 +23,18 @@ function App() {
     contributions: null,
     loading: true
   });
+  const normalizedPath = currentPath.replace(/\/+$/, '') || '/';
+  const pageTitles = {
+    '/': 'chirag_prajapat',
+    '/about': 'ABOUT /',
+    '/skills': 'SKILLS /',
+    '/projects': 'PROJECT /',
+    '/certificates': 'CERTIFICATES /',
+    '/contact': 'CONTACT /',
+    '/resume': 'RESUME /',
+    '/code-community': 'CODE & COMMUNITY /'
+  };
+  const currentPageTitle = pageTitles[normalizedPath] || 'chirag_prajapat';
   const [isLightMode, setIsLightMode] = useState(() => {
     const savedTheme = localStorage.getItem('portfolio-theme');
     return savedTheme === 'light';
@@ -93,6 +106,8 @@ function App() {
     fetchGithubMetrics();
 
     return () => {
+
+      
       ignore = true;
     };
   }, [githubUsername]);
@@ -165,10 +180,11 @@ function App() {
       id: 4,
       image: "https://image2url.com/r2/default/images/1774849992560-90ec3e88-23f2-44f6-a3a7-ce8f195129bd.png",
       title: "SkillBridge",
-      description: "SkillBridge is a responsive web application built using React and Tailwind CSS, focused on delivering a clean and intuitive user interface. It demonstrates component-based architecture, reusable UI elements, and modern frontend development practices.",
+      description: "SkillBridge is a responsive web application built using React and Tailwind CSS, focused on delivering a clean and intuitive user interface. It demonstrates component-based architecture, reusable UI elements, and modern frontend development.",
       tech: "React , Tailwind",
       link: "https://skilbridg.netlify.app/",
-      github: "https://github.com/Chiragprajapat003/SkillBridge.git"
+      github: "https://github.com/Chiragprajapat003/SkillBridge.git",
+      youtube: "https://www.youtube.com/watch?v=vPr4sP6unSE&t=36s"
     },
     {
       id: 5,
@@ -177,7 +193,8 @@ function App() {
       description: "A Collection Manager RTK project built with Redux Toolkit efficiently manages and organizes data collections with centralized state handling. It ensures scalable, predictable state updates and simplifies complex data flows in modern React applications.",
       tech: "React/Redux , Tailwind",
       link: "https://collection-manager-rtk.netlify.app/",
-      github: "https://github.com/Chiragprajapat003/collection-manager-rtk.git"
+      github: "https://github.com/Chiragprajapat003/collection-manager-rtk.git",
+      youtube: "https://www.youtube.com/watch?v=h9DdOXxArKM"
     }
   ];
 
@@ -232,13 +249,20 @@ function App() {
     }
   ];
 
+  const projectDisplayOrder = [1, 4, 5, 2, 3];
+  const orderedProjects = [...projects].sort(
+    (a, b) => projectDisplayOrder.indexOf(a.id) - projectDisplayOrder.indexOf(b.id)
+  );
+
   const scrollToSection = (e, id) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       // Update the URL to look like a sub-page without a hash
-      window.history.pushState(null, '', `/${id === 'home' ? '' : id}`);
+      const nextPath = `/${id === 'home' ? '' : id}`;
+      window.history.pushState(null, '', nextPath);
+      setCurrentPath(nextPath);
     }
   };
 
@@ -269,6 +293,12 @@ function App() {
 
   return (
     <div className="app">
+      <Helmet>
+        <title>{currentPageTitle}</title>
+        <meta name="description" content="portfolio" />
+      </Helmet>
+
+
       <AnimatedCursor
         innerSize={8}
         outerSize={35}
@@ -321,7 +351,7 @@ function App() {
               <a href="#skills" onClick={(e) => { scrollToSection(e, 'skills'); setIsMobileMenuOpen(false); }}>Skills</a>
               <a href="#projects" onClick={(e) => { scrollToSection(e, 'projects'); setIsMobileMenuOpen(false); }}>Projects</a>
               <a href="#certificates" onClick={(e) => { scrollToSection(e, 'certificates'); setIsMobileMenuOpen(false); }}>Certificates</a>
-              <a href="/resume" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/resume'); setCurrentPath('/resume'); setIsMobileMenuOpen(false); }}>Resume</a>
+              <a href="/chiragprajapat-resume.html" target="_blank" rel="noreferrer" onClick={() => setIsMobileMenuOpen(false)}>Resume</a>
               <a href="#contact" onClick={(e) => { scrollToSection(e, 'contact'); setIsMobileMenuOpen(false); }}>Contact</a>
               <button
                 type="button"
@@ -347,7 +377,7 @@ function App() {
                 </div>
                 <div className="hero-actions" style={{ display: 'inline-block' }}>
                   <div className="hero-buttons">
-                    <a href="/resume" onClick={(e) => { e.preventDefault(); window.history.pushState(null, '', '/resume'); setCurrentPath('/resume'); }} className="cta-button" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', width: '250px', height: '60px', boxSizing: 'border-box', whiteSpace: 'nowrap', border: 'none', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'inherit', cursor: 'pointer' }}>RESUME</a>
+                    <a href="/chiragprajapat-resume.html" target="_blank" rel="noreferrer" className="cta-button" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', width: '250px', height: '60px', boxSizing: 'border-box', whiteSpace: 'nowrap', border: 'none', fontSize: '1rem', fontWeight: 'bold', fontFamily: 'inherit', cursor: 'pointer' }}>RESUME</a>
                     <a href="#projects" onClick={(e) => scrollToSection(e, 'projects')} className="cta-button" style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none', width: '250px', height: '60px', boxSizing: 'border-box', whiteSpace: 'nowrap' }}>VIEW PROJECTS</a>
                   </div>
                   <div className="hero-social-links" style={{ width: '100%', justifyContent: 'space-between', marginTop: '1.5rem', gap: '0' }}>
@@ -475,8 +505,8 @@ function App() {
             <section id="projects" className="section-container">
               <h2 className="section-title">FEATURED PROJECTS</h2>
               <div className="projects-grid">
-                {(showAllProjects ? projects : projects.slice(0, 3)).map((project) => (
-                  <div key={project.id} className="project-card" style={project.id === 1 ? { gridColumn: '1 / -1', justifySelf: 'center', maxWidth: '900px', width: '100%', border: '1px solid rgba(0, 242, 255, 0.4)', boxShadow: '0 0 20px rgba(0, 242, 255, 0.1)' } : {}}>
+                {(showAllProjects ? orderedProjects : orderedProjects.slice(0, 3)).map((project) => (
+                  <div key={project.id} className="project-card" style={project.id === 1 ? { flexBasis: '100%', maxWidth: '900px', width: '100%', marginLeft: 'auto', marginRight: 'auto', border: '1px solid rgba(0, 242, 255, 0.4)', boxShadow: '0 0 20px rgba(0, 242, 255, 0.1)' } : {}}>
                     <div
                       className="project-image-placeholder"
                       onClick={() => {
@@ -504,17 +534,32 @@ function App() {
                     <div className="project-info" style={project.id === 1 ? { padding: '2.5rem 3rem' } : {}}>
                       <h3 style={project.id === 1 ? { fontSize: '1.8rem', color: '#fff', marginBottom: '1.5rem', textAlign: 'center' } : {}}>{project.title}</h3>
                       <p style={project.id === 1 ? { fontSize: '1.15rem', lineHeight: '1.8', textAlign: 'center', color: 'var(--text-secondary)' } : {}}>{project.description}</p>
+                      {project.id === 1 && (
+                        <div className="project-links" style={{ justifyContent: 'center', marginTop: '1.25rem' }}>
+                          <button
+                            type="button"
+                            className="cta-button"
+                            onClick={() => setIsCloneModalOpen(true)}
+                            style={{ minWidth: '290px' }}
+                          >
+                            EXPLORE ALL SIX CLONES
+                          </button>
+                        </div>
+                      )}
                       {project.id !== 1 && (
                         <div className="project-links">
                           <a href={project.link} target="_blank" rel="noreferrer" className="project-link">VIEW PROJECT &rarr;</a>
                           <a href={project.github} target="_blank" rel="noreferrer" className="github-link"><FaGithub /> CODE</a>
+                          {project.youtube && (
+                            <a href={project.youtube} target="_blank" rel="noreferrer" className="github-link"><FaYoutube /> DEMO</a>
+                          )}
                         </div>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-              {projects.length > 3 && !showAllProjects && (
+              {orderedProjects.length > 3 && !showAllProjects && (
                  <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
                     <button className="cta-button" onClick={() => setShowAllProjects(true)}>VIEW MORE PROJECTS</button>
                  </div>
@@ -591,6 +636,9 @@ function App() {
                     <div className="clone-project-links">
                       <a href={clone.github} target="_blank" rel="noreferrer" className="clone-icon-link" title="Source Code">
                         <FaGithub size={22} /> Code
+                      </a>
+                      <a href={clone.link} target="_blank" rel="noreferrer" className="clone-icon-link" title="Open Live Site">
+                        Live
                       </a>
                       {clone.youtube && (
                         <a href={clone.youtube} target="_blank" rel="noreferrer" className="clone-icon-link yt-link" title="Watch Demo">
